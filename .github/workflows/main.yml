@@ -17,7 +17,7 @@ env:
 jobs:
   check_trigger:
     runs-on: ubuntu-latest
-    if: github.event.action != edited || (github.event.action == 'edited' && github.event.changes.title == '')
+    if: github.event.action != 'edited' || (github.event.action == 'edited' && github.event.changes.title == '')
     steps:
       - name: Step
         run: |
@@ -30,5 +30,6 @@ jobs:
       - name: hellow world
         run: |
           echo "hello world"
+          echo ${{github.event_name}}
 
   
