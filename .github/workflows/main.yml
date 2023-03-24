@@ -22,3 +22,12 @@ jobs:
       - name: Step
         run: |
           echo hello
+
+  anothe_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hellow world
+        run: |
+          echo "hello world"
+
+  
