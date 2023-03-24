@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches:
+      - 'master'
+      - 'develop'
+  pull_request:
+    types: [edited, ready_for_review, opened, synchronize, reopened]
+    paths-ignore:
+      - 'site/**'
+      - '**/*.md'
+
+env:
+  CYPRESS_VERIFY_TIMEOUT: 180000 # https://docs.cypress.io/guides/guides/command-line#cypress-verify
+  CVAT_VERSION: "local"
+
+jobs:
+  no_run_on_description_update:
+    run: |
+    echo ${{github.event.action}}
+    echo ${{github.event.changes}}
