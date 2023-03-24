@@ -15,7 +15,10 @@ env:
   CVAT_VERSION: "local"
 
 jobs:
-  no_run_on_description_update:
-    run: |
-    echo ${{github.event.action}}
-    echo ${{github.event.changes}}
+  no_run_on_description_changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step
+        run: |
+          echo ${{github.event.action}}
+          echo ${{github.event.changes}}
