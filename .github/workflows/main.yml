@@ -1,0 +1,35 @@
+name: CI
+on:
+  push:
+    branches:
+      - 'master'
+      - 'develop'
+  pull_request:
+    types: [edited, ready_for_review, opened, synchronize, reopened]
+    paths-ignore:
+      - 'site/**'
+      - '**/*.md'
+
+env:
+  CYPRESS_VERIFY_TIMEOUT: 180000 # https://docs.cypress.io/guides/guides/command-line#cypress-verify
+  CVAT_VERSION: "local"
+
+jobs:
+  check_trigger:
+    runs-on: ubuntu-latest
+    if: github.event.action != 'edited' || (github.event.action == 'edited' && github.event.changes.title == '')
+    steps:
+      - name: Step
+        run: |
+          echo hello
+
+  anothe_job:
+    needs: check_trigger
+    runs-on: ubuntu-latest
+    steps:
+      - name: hellow world
+        run: |
+          echo "hello world"
+          echo ${{github.event_name}}
+
+  
