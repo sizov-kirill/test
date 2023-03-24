@@ -21,4 +21,4 @@ jobs:
       - name: Step
         run: |
           echo ${{github.event.action}}
-          echo ${{github.event.changes}}
+          echo ${{github.event.changes.title}}
