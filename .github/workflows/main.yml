@@ -17,8 +17,8 @@ env:
 jobs:
   no_run_on_description_changes:
     runs-on: ubuntu-latest
+    if: github.event.action == 'edited' and github.event.changes.title == ''
     steps:
       - name: Step
         run: |
-          echo ${{github.event.action}}
-          echo ${{github.event.changes.title}}
+          echo hello
